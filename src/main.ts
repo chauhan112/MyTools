@@ -2,28 +2,24 @@ import { Page } from "./rlib/timeline/t2025/may/ToolsHomepage/Page";
 import "./style.css";
 import { CircleCheck } from "lucide";
 import { Page as FileSearchPage } from "./rlib/timeline/t2025/may/FileSearch/Components";
-import {
-    LightFsWrapper,
-    IsoGitWrapper,
-    // ContentSearch,
-} from "./rlib/timeline/t2025/may/FileSearch/model";
+
 import { DEF_TITLE } from "./rlib/timeline/t2025/may/ToolsHomepage/Components";
 // import { Tools } from "./rlib/timeline/t2025/april/tools";
+// import { GComponent } from "./rlib/timeline/t2025/april/GComponent";
 
-const fs = new LightFsWrapper("git-search-repo-fs");
-const igw = new IsoGitWrapper(fs);
 // const cs = new ContentSearch();
 
 const page = Page();
 page.layout.s.wrapper.s.header.s.wrapper.s.goBack.s.img.update({
     src: "logo.png",
 });
-const fspage = FileSearchPage();
+
 page.addApp({
     title: "Content Searching",
     description: "Search in your git repo files content",
     link: "task-manager/",
     routeFunc: () => {
+        const fspage = FileSearchPage();
         page.mainBody.clear();
         page.mainBody.display(fspage);
         page.layout.s.wrapper.s.header.s.updateTitle(
@@ -58,6 +54,33 @@ page.addApp({
         //     // area.update({ value: res });
         //     page.mainBody.display(area);
         // });
+        // fs.dirlist("/", false).then((dirs) => {
+        //     console.log(dirs);
+        //     dirs.forEach((dir) => {
+        //         fs.delete(dir, true).catch(console.error);
+        //     });
+        // });
+        // const inp = document.createElement("input");
+        // inp.addEventListener("onchange", (e: any) =>
+        //     console.log(e.target.value)
+        // );
+
+        // page.mainBody.comp.getElement().appendChild(inp);
+    },
+    icon: CircleCheck,
+});
+
+page.addApp({
+    title: "Links Opener",
+    description: "Search in your git repo files content",
+    link: "task-manager/",
+    routeFunc: () => {
+        const fspage = FileSearchPage();
+        page.mainBody.clear();
+        page.mainBody.display(fspage);
+        page.layout.s.wrapper.s.header.s.updateTitle(
+            DEF_TITLE + " - " + "Content Searching"
+        );
     },
     icon: CircleCheck,
 });
