@@ -5,10 +5,10 @@ export default defineConfig({
     plugins: [
         tailwindcss(),
     ],
-    resolve: {
-        alias: {
-            'unenv/node/buffer': 'unenv/runtime/node/buffer/index',
-            'unenv/node/process': 'unenv/runtime/node/process/index',
-        },
+
+    server: {
+        host: '0.0.0.0',
+        port: 5173,
+        allowedHosts: ['p-5173.rajababu.space', "vscode-raja.rajababu.space"]
     },
 });
